@@ -1,7 +1,7 @@
 package me.whiteship.inflearnthejavatest.study;
 
-import jdk.jfr.Enabled;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.*;
 
@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 import static org.junit.jupiter.api.Assumptions.assumingThat;
 
-public class SaTest {
+public class StudyTest {
     
     @Test
     void init1() {
@@ -54,6 +54,32 @@ public class SaTest {
     @Test
     @EnabledOnJre(JRE.JAVA_8)
     void create05() {
+        assertThat(1).isEqualTo(1);
+    }
+    
+    @Test
+    @DisplayName("태그 : fast")
+    @Tag("fast")
+    void create06() {
+        assertThat(1).isEqualTo(1);
+    }
+    
+    @Test
+    @DisplayName("태그 : slow")
+    @Tag("slow")
+    void create07() {
+        assertThat(1).isEqualTo(1);
+    }
+    
+    @FastTest
+    @DisplayName("메타 애노테이션 : fast")
+    void create08() {
+        assertThat(1).isEqualTo(1);
+    }
+    
+    @SlowTest
+    @DisplayName("메타 애노테이션 : slow")
+    void create09() {
         assertThat(1).isEqualTo(1);
     }
 }
